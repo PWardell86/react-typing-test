@@ -1,0 +1,77 @@
+#main-section {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 25%;
+  right: 25%;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-inline: 10px;
+  user-select: none;
+}
+
+#test-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  transform: translateY(25%);
+}
+
+.test-container {
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 16px;
+  background-color: var(--main-container-color);
+  color: black;
+  padding: 5px;
+  text-align: center;
+
+  user-select: none;
+  cursor: text;
+}
+
+.test-container > span {
+  box-sizing: border-box;
+  position: relative;
+}
+
+.stats-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin-inline: 25%;
+  padding: 5px;
+  user-select: none;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+button {
+  border-radius: 3px;
+  background-color: var(--main-button-color);
+  color: white;
+  font-weight: bold;
+  padding-block: 5px;
+  margin-top: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  user-select: none;
+  width: fit-content;
+  transition: 0.2s;
+}
+
+button.alt-button {
+  background-color: rgb(156, 156, 156);
+  color: black;
+}

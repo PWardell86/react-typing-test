@@ -1,0 +1,24 @@
+.correct {
+  background-color: rgba(55, 255, 55, 0.57);
+}
+
+.incorrect {
+  background-color: rgba(255, 43, 43, 0.57);
+}
+
+.current::after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  right: 100%;
+  width: 1px;
+  background: black;
+  animation: caret 1s steps(1) infinite;
+}
+
+@keyframes caret {
+  50% {
+    background: transparent;
+  }
+}
