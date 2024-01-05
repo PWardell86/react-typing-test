@@ -1,6 +1,6 @@
 .statistic {
     display: flex;
     flex-flow: row nowrap;
-    padding-inline: 5px;
+    /* padding-inline: 5px; */
     white-space: pre;
 }

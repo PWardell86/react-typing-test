@@ -41,16 +41,6 @@
   position: relative;
 }
 
-.stats-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  margin-inline: 25%;
-  padding: 5px;
-  user-select: none;
-  font-weight: bold;
-}
-
 .buttons {
   display: flex;
   flex-direction: row;
