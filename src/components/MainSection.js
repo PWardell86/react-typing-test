@@ -4,14 +4,16 @@ import TestText from './TestText';
 import React from 'react';
 class MainSection extends React.Component {
   // TODO: Some way to get text dynamically
-  text = "Lorem ipsum";
-  state = {
+  text = "Hippos inhabit rivers, lakes, and mangrove swamps. Territorial bulls each preside over a stretch of water and a group of five to thirty cows and calves. Mating and birth both occur in the water. During the day, hippos remain cool by staying in water or mud, emerging at dusk to graze on grasses. While hippos rest near each other in the water, grazing is a solitary activity and hippos typically do not display territorial behaviour on land.";
+  // text = "test";
+  DEFAULT = {
     started: false,
     finished: false,
     correctChars: 0,
     totalChars: this.text.length,
     currentChar: 0
   }
+  state = {...this.DEFAULT}
 
   render() {
     return (
