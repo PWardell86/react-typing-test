@@ -1,70 +1,11 @@
 import './TestText.css';
 import React from 'react';
 import PropTypes from 'prop-types';
+
 class TestText extends React.Component {
-
-  isCharValid(char) {
-    return char.charCodeAt() >= 32 && char.charCodeAt() <= 126;
-  }
-
-  checkAndHandleBackspace(event) {
-    if (event.keyCode !== 8) return false;
-    if (this.props.state.currentChar > 0) {
-      let currentSpan = document.getElementById(this.props.state.currentChar);
-      currentSpan.classList.remove('current');
-      this.props.state.currentChar--;
-      currentSpan = document.getElementById(this.props.state.currentChar);
-      if (currentSpan.classList.contains('correct')) {
-        this.props.state.correctChars--;
-      }
-      currentSpan.classList.remove('correct');
-      currentSpan.classList.remove('incorrect');
-      currentSpan.classList.add('current');
-    }
-    return true;
-  }
-
-  checkAndHandleShift(event) {
-    return event.keyCode === 16;
-  }
-
-  handleKeyDown = (event) => {
-    if (this.props.state.finished) return;
-    // Check for Backspace and Shift. Ignore other keys like Ctrl, Alt, etc.
-    if (event.key.length > 1) {
-      if (this.checkAndHandleBackspace(event)) return;
-      if (this.checkAndHandleShift(event)) return;
-      return;
-    }
-
-    if (!this.isCharValid(event.key)) return;
-
-    // Start the game if it hasn't started yet
-    if (!this.props.state.started) {
-      this.props.state.started = true;
-      this.props.state.startTime = Date.now();
-    }
-    const char = this.props.text[this.props.state.currentChar];
-    const currentElement = document.getElementById(this.props.state.currentChar);
-
-    // Stop if we reached the end
-    if (this.props.state.currentChar >= this.props.text.length - 1) {
-      this.props.state.finished = true;
-    }
-
-    // If not, update the element if the user pressed the proper key
-    if (event.key === char) {
-      currentElement.classList.add('correct');
-      this.props.state.correctChars++;
-    } else {
-      currentElement.classList.add('incorrect');
-    }
-    // Move to the next character
-    currentElement.classList.remove('current');
-    this.props.state.currentChar++;
-    if (this.props.state.currentChar < this.props.text.length) {
-      document.getElementById(this.props.state.currentChar).classList.add('current');
-    }
+  
+  componentDidMount = () => {
+    document.addEventListener('keydown', this.handleKeyDown);
   }
 
   render = () => {
@@ -72,12 +13,78 @@ class TestText extends React.Component {
     for (let char of this.props.text) {
       testText.push(<span id={testText.length}>{char}</span>);
     }
-    testText.push(<span id={testText.length}>{' '}</span>);
+    testText.push(<span id={testText.length}>{''}</span>);
     return testText;
   }
 
-  componentDidMount = () => {
-    document.addEventListener('keydown', this.handleKeyDown);
+  handleKeyDown = (event) => {
+    if (this.props.state.finished) return;
+    // If we see Backspace, handle it. If we see any other special key, ignore it.
+    if (event.key.length > 1) {
+      if (event.key === "Backspace")
+        this.handleBackspace(event);
+      return;
+    }
+    // If we see a character that wouldn't appear in some text, ignore it.
+    if (!this.isCharValid(event.key)) return;
+
+    // Start the test if it hasn't started yet
+    if (!this.props.state.started) {
+      this.startTest();
+    }
+    const expectedChar = this.props.text[this.props.state.currentIndex];
+    const currentElement = document.getElementById(this.props.state.currentIndex);
+
+    // Stop if we reached the end
+    if (this.props.state.currentIndex >= this.props.text.length - 1) {
+      this.props.state.finished = true;
+    }
+
+    // If not, update the element if the user pressed the proper key
+    this.setCharacterCorrectness(event, expectedChar, currentElement);
+    this.moveToNextCharacter(currentElement);
+  }
+
+  startTest() {
+    this.props.state.started = true;
+    this.props.state.startTime = Date.now();
+  }
+
+  setCharacterCorrectness(event, expectedChar, currentElement) {
+    if (event.key === expectedChar) {
+      currentElement.classList.add('correct');
+      this.props.state.correctChars++;
+    } else {
+      currentElement.classList.add('incorrect');
+    }
+  }
+
+  moveToNextCharacter(currentElement) {
+    currentElement.classList.remove('current');
+    this.props.state.currentIndex++;
+    if (this.props.state.currentIndex < this.props.text.length) {
+      document.getElementById(this.props.state.currentIndex).classList.add('current');
+    }
+  }
+
+  isCharValid(char) {
+    return char.charCodeAt() >= 32 && char.charCodeAt() <= 126;
+  }
+
+  handleBackspace(event) {
+    if (this.props.state.currentIndex > 0) {
+      let currentSpan = document.getElementById(this.props.state.currentIndex);
+      currentSpan.classList.remove('current');
+
+      this.props.state.currentIndex--;
+      currentSpan = document.getElementById(this.props.state.currentIndex);
+      if (currentSpan.classList.contains('correct')) {
+        this.props.state.correctChars--;
+      }
+      currentSpan.classList.remove('correct');
+      currentSpan.classList.remove('incorrect');
+      currentSpan.classList.add('current');
+    }
   }
 }
 

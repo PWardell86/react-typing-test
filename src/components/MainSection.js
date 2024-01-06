@@ -2,21 +2,21 @@ import './MainSection.css';
 import StatsContainer from './StatsContainer';
 import TestText from './TestText';
 import React from 'react';
+import sampleText from '../paragraphs';
 
 class MainSection extends React.Component {
-  // TODO: Some way to get text dynamically
-  text = "Hippos inhabit rivers, lakes, and mangrove swamps. Territorial bulls each preside over a stretch of water and a group of five to thirty cows and calves. Mating and birth both occur in the water. During the day, hippos remain cool by staying in water or mud, emerging at dusk to graze on grasses. While hippos rest near each other in the water, grazing is a solitary activity and hippos typically do not display territorial behaviour on land.";
+  text = "";
   DEFAULT = {
     started: false,
     finished: false,
     correctChars: 0,
-    totalChars: this.text.length,
-    currentChar: 0
-  }
-  state = {...this.DEFAULT}
+    totalChars: 0,
+    currentIndex: 0,
+  };
+  state = { ...this.DEFAULT };
 
   reset = () => {
-    this.setState({...this.DEFAULT});
+    this.setState({ ...this.DEFAULT, totalChars: this.text.length});
     this.resetText();
   }
 
@@ -29,6 +29,16 @@ class MainSection extends React.Component {
     });
     // Set the first span to current
     document.querySelector('#test-text > span').classList.add('current');
+  }
+
+  setNewText = () => {
+    const index = Math.floor(Math.random() * sampleText.length);
+    this.text = sampleText[index];
+    this.reset();
+  }
+
+  componentDidMount() {
+    this.setNewText();
   }
 
   render() {
@@ -44,8 +54,8 @@ class MainSection extends React.Component {
         </div>
 
         <div className="buttons">
-          <button id="reset-btn" className="button" onClick={this.reset}>Reset</button>
-          <button id="new-text-btn" className="button">New Text</button>
+          <div id="reset-btn" className="button" onClick={this.reset}>Reset</div>
+          <div id="new-text-btn" className="button" onClick={this.setNewText}>New Text</div>
         </div>
       </div>
     );

@@ -13,9 +13,9 @@ class StatsContainer extends React.Component {
   render() {
     return (
       <div className="stats-container">
-        <Statistic id="accuracy" label="Accuracy" value={this.state.accuracy} />
-        <Statistic id="wpm" label="WPM" value={this.state.wpm} />
-        <Statistic id="timer" label="" value={this.state.timer} />
+        <Statistic id="accuracy" label="Accuracy" value={this.state.accuracy.toString()} />
+        <Statistic id="wpm" label="WPM" value={this.state.wpm.toString()} />
+        <Statistic id="timer" label="" value={this.state.timer.toString()} />
       </div>
     );
   }
@@ -25,7 +25,8 @@ class StatsContainer extends React.Component {
   }
 
   updateAll = () => {
-    if (!this.props.data.started || this.props.data.finished) return;
+    if (!this.props.data.started) return;
+    if (this.props.data.finished) return;
     this.updateAccuracy();
     this.updateWPM();
     this.updateTime();
@@ -33,7 +34,7 @@ class StatsContainer extends React.Component {
 
   updateAccuracy = () => {
     const correct = this.props.data.correctChars;
-    const soFar = this.props.data.currentChar;
+    const soFar = this.props.data.currentIndex;
     const accuracy = (correct / soFar * 100).toFixed(0);
     this.setState({ accuracy: accuracy });
   }
