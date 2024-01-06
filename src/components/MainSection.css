@@ -36,11 +36,6 @@
   cursor: text;
 }
 
-.test-container > span {
-  box-sizing: border-box;
-  position: relative;
-}
-
 .buttons {
   display: flex;
   flex-direction: row;

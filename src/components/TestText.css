@@ -6,14 +6,14 @@
   background-color: rgba(255, 43, 43, 0.57);
 }
 
-.current::after {
-  content: "";
-  position: absolute;
-  top: 0%;
-  bottom: 0%;
-  right: 100%;
-  width: 1px;
-  background: black;
+span {
+  box-sizing: content-box;
+}
+
+.current {
+  background: linear-gradient(to right, black 1px, transparent 1px);
+  background-position: left;
+  background-repeat: no-repeat;
   animation: caret 1s steps(1) infinite;
 }
 
