@@ -3,6 +3,7 @@
   flex-flow: row nowrap;
   user-select: none;
   font-weight: bold;
+  margin-block: 10px;
 }
 
 .stats-container > div {
