@@ -3,18 +3,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class TestText extends React.Component {
-  
+  myRef = React.createRef();
+
   componentDidMount = () => {
+    document.addEventListener('keydown', this.handleKeyDown);
+    document.getElementById('test-text').focus();
+  }
+
+  handleFocus = () => {
+    this.setState();
     document.addEventListener('keydown', this.handleKeyDown);
   }
 
+  handleBlur = () => {
+    document.removeEventListener('keydown', this.handleKeyDown);
+  }
   render = () => {
     const testText = [];
     for (let char of this.props.text) {
       testText.push(<span id={testText.length}>{char}</span>);
     }
     testText.push(<span id={testText.length}>{''}</span>);
-    return testText;
+    return <div id="test-text" tabIndex="-1" ref={this.myRef} onFocus={this.handleFocus} onBlur={this.handleBlur}>{testText}</div>;
   }
 
   handleKeyDown = (event) => {

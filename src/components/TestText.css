@@ -9,9 +9,25 @@
 span {
   box-sizing: content-box;
 }
-
 .current {
-  background: linear-gradient(to right, black 1px, transparent 1px);
+  background: none;
+}
+
+#test-text {
+  user-select: none;
+  padding: 5px;
+  text-align: center;
+  cursor: text;
+  width: fit-content;
+  align-self: center;
+}
+
+#test-text:focus {
+  outline: none;
+}
+
+#test-text:focus .current {
+  background: linear-gradient(to right, white 1px, transparent 1px);
   background-position: left;
   background-repeat: no-repeat;
   animation: caret 1s steps(1) infinite;
