@@ -14,9 +14,10 @@ class MainSection extends React.Component {
     currentIndex: 0,
   };
   state = { ...this.DEFAULT };
+  
 
   reset = () => {
-    this.setState({ ...this.DEFAULT, totalChars: this.text.length});
+    this.setState({ ...this.DEFAULT, totalChars: this.text.length });
     this.resetText();
   }
 
@@ -45,17 +46,15 @@ class MainSection extends React.Component {
     return (
       <div id="main-section">
         <div className="header">
-          <h1>Typing test</h1>
+          <h1>Typing Test</h1>
           <div id="test-info">Start typing to begin...</div>
         </div>
         <StatsContainer data={this.state} />
-        <div id="test-text" className="test-container">
-          <TestText text={this.text} state={this.state} />
-        </div>
+        <TestText text={this.text} state={this.state} />
 
         <div className="buttons">
-          <div id="reset-btn" className="button" onClick={this.reset}>Reset</div>
-          <div id="new-text-btn" className="button" onClick={this.setNewText}>New Text</div>
+          <button id="reset-btn" className="btn" onClick={this.reset}>Reset</button>
+          <button id="new-text-btn" className="btn" onClick={this.setNewText}>New Text</button>
         </div>
       </div>
     );
