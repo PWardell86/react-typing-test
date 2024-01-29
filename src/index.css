@@ -1,20 +1,20 @@
 :root {
-  --main-bg-color: #1F1F1F;
+  --main-bg-color: #1f1f1f;
   --sec-bg-color: #525252;
   --main-text-color: #000000;
-  --main-button-color: #00A878;
+  --main-button-color: #00a878;
   --main-button-text-color: black;
   --main-button-hover-color: #c0bfbf;
-  --main-container-color: #E8EDDF;
+  --main-container-color: #e8eddf;
   --secondary-container-color: #c3c3c3;
   --main-font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: var(--main-bg-color);
-    font-family: var(--main-font);
-    color: white;
-    font-size: 20px;
-    margin: 0;
-    padding: 0;
-    }
+  background-color: var(--main-bg-color);
+  font-family: var(--main-font);
+  color: white;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}

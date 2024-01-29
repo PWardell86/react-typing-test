@@ -46,15 +46,13 @@ class MainSection extends React.Component {
     return (
       <div id="main-section">
         <div className="header">
-          <h1>Typing Test</h1>
           <div id="test-info">Start typing to begin...</div>
         </div>
         <StatsContainer data={this.state} />
         <TestText text={this.text} state={this.state} />
-
         <div className="buttons">
-          <button id="reset-btn" className="btn" onClick={this.reset}>Reset</button>
-          <button id="new-text-btn" className="btn" onClick={this.setNewText}>New Text</button>
+          <button id="reset-btn" className="btn-main btn" onClick={this.reset}>Reset</button>
+          <button id="new-text-btn" className="btn-main btn" onClick={this.setNewText}>New Text</button>
         </div>
       </div>
     );
