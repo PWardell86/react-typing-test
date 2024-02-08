@@ -1,0 +1,13 @@
+.container {
+  display: grid;
+  place-items: center;
+}
+
+.sign-up {
+  font-size: 15px;
+}
+
+.back-btn {
+  margin: 5px;
+  font-size: .75em;
+}
