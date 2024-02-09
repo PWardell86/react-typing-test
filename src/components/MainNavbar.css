@@ -9,8 +9,8 @@
   color: var(--main-button-text-color);
 }
 
-.navbar {
-  /* height: 60px; */
+.navbar-brand {
+  user-select: none;
 }
 
 .avatar {
@@ -38,4 +38,27 @@
 #logged-in-items {
   display: flex;
   height: 100%;
+}
+
+.btn-text {
+  color: white;
+  margin-right: 5px;
+  margin-block: 5px;
+}
+
+.btn-text:hover {
+  color: var(--main-button-color);
+}
+
+.btn-hollow {
+  background-color: transparent;
+  color: var(--main-button-color);
+  border: 2px solid var(--main-button-color);
+  margin-right: 10px;
+  margin-block: 5px;
+}
+
+.btn-hollow:hover {
+  background-color: var(--main-button-color);
+  color: var(--main-button-text-color);
 }

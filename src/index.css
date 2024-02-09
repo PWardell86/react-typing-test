@@ -18,3 +18,18 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* CSS for a custom message that is hidden by default */
+#mobile-support-message {
+  display: none;
+}
+
+/* CSS for showing the custom message on screens that are 600px or less */
+@media screen and (max-width: 600px) {
+  #mobile-support-message {
+    display: block;
+  }
+  #root {
+    display: none;
+  }
+}
