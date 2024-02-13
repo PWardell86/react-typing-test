@@ -5,12 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const BACKEND = "http://3.137.167.34:5000/api";
+const ADDRESS = "3.142.245.224"
+const BACKEND = `http://${ADDRESS}:5000/api`;
 
 root.render(
-    <React.StrictMode>
+    // <React.StrictMode>
       <App backend={BACKEND}/>
-    </React.StrictMode>
+    // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

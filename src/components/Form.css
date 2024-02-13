@@ -1,0 +1,23 @@
+.form-check {
+  font-size: 0.7em;
+  align-self: center;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.back-btn {
+  position: absolute;
+  margin-left: 5px;
+}
+
+#signup-btn {
+  margin-left: 5px;
+  font-size: 0.7em;
+}
+

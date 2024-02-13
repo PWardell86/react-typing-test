@@ -62,3 +62,7 @@
   background-color: var(--main-button-color);
   color: var(--main-button-text-color);
 }
+
+#signed-in {
+  margin-bottom: 0 !important;
+}
