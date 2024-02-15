@@ -29,6 +29,7 @@ class TestText extends React.Component {
   }
 
   handleKeyDown = (event) => {
+    event.preventDefault();
     if (this.props.state.finished) {
       return;
     }
