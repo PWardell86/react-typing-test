@@ -1,45 +1,49 @@
 import './App.css';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainSection from './components/MainSection';
 import MainNavbar from './components/MainNavbar';
 import LoginPage from './components/LoginPage';
 import SignupPage from './components/SignupPage';
+import UserStats from './components/UserStats';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
-function App({ backend }) {
-  const [user, setUser] = React.useState(null);
+class App extends React.Component {
+  state = { user: null };
+  token = localStorage.getItem('token');
 
-  useEffect(() => {
-    const token = Cookies.get('token')
-    if (token) {
-      axios.post(backend + '/getuser', {
-        token: token
+  componentDidMount() {
+    if (this.token) {
+      axios.post(this.props.backend + '/getuser', {
+        token: this.token
       })
         .then((response) => {
-          console.log(response);
-          setUser(response.data.user[3]);
+          this.setState({user: response.data.user[3]});
         }).catch((error) => {
           console.log(error);
         });
     }
-  }, [user, backend]);
-
-  return (
+  }
+  render = () => {
+    return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<LoginPage user={user} backend={backend} />} />
-        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage user={this.state.user} backend={this.props.backend} />} />
+        <Route path="/signup" element={<SignupPage backend={this.props.backend} />} />
         <Route path="/" element={
           <div>
-            <MainNavbar user={user} />
-            <MainSection />
+            <div id="game-section">
+              <MainNavbar user={this.state.user} />
+              <MainSection backend={this.props.backend} />
+            </div>
+            <div className="section-sep"/>
+            <UserStats backend={this.props.backend} token={this.token} />
           </div>
         } />
       </Routes>
-    </BrowserRouter>
-  );
+    </BrowserRouter >
+    );
+  }
 }
 
 export default App;
