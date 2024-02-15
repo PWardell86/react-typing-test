@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class TestText extends React.Component {
   myRef = React.createRef();
 
-  componentDidMount = () => {
+  componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown);
     document.getElementById('test-text').focus();
   }
@@ -18,6 +18,7 @@ class TestText extends React.Component {
   handleBlur = () => {
     document.removeEventListener('keydown', this.handleKeyDown);
   }
+  
   render = () => {
     const testText = [];
     for (let char of this.props.text) {
@@ -28,7 +29,10 @@ class TestText extends React.Component {
   }
 
   handleKeyDown = (event) => {
-    if (this.props.state.finished) return;
+    event.preventDefault();
+    if (this.props.state.finished) {
+      return;
+    }
     // If we see Backspace, handle it. If we see any other special key, ignore it.
     if (event.key.length > 1) {
       if (event.key === "Backspace")
@@ -48,6 +52,7 @@ class TestText extends React.Component {
     // Stop if we reached the end
     if (this.props.state.currentIndex >= this.props.text.length - 1) {
       this.props.state.finished = true;
+      this.props.onFinish();
     }
 
     // If not, update the element if the user pressed the proper key

@@ -15,7 +15,7 @@ function LoginPage({ backend }) {
       password: password,
       staySignedIn: staySignedIn
     }).then((response) => {
-      document.cookie = `token=${response.data.token}`;
+      localStorage.setItem('token', response.data.token);
       window.location.href = '/';
     }).catch((error) => {
       console.log(error);
