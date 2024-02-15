@@ -18,7 +18,7 @@ class App extends React.Component {
         token: this.token
       })
         .then((response) => {
-          this.setState({user: response.data.user[3]});
+          this.setState({ user: response.data.user[3] });
         }).catch((error) => {
           console.log(error);
         });
@@ -26,22 +26,27 @@ class App extends React.Component {
   }
   render = () => {
     return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<LoginPage user={this.state.user} backend={this.props.backend} />} />
-        <Route path="/signup" element={<SignupPage backend={this.props.backend} />} />
-        <Route path="/" element={
-          <div>
-            <div id="game-section">
-              <MainNavbar user={this.state.user} />
-              <MainSection backend={this.props.backend} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<LoginPage user={this.state.user} backend={this.props.backend} />} />
+          <Route path="/signup" element={<SignupPage backend={this.props.backend} />} />
+          <Route path="/" element={
+            <div>
+              <div id="game-section">
+                <MainNavbar user={this.state.user} />
+                <MainSection backend={this.props.backend} />
+              </div>
+              {this.state.user &&
+                <div>
+                  <div className="section-sep" />
+                  <UserStats backend={this.props.backend} token={this.token} />
+                </div>
+              }
+
             </div>
-            <div className="section-sep"/>
-            <UserStats backend={this.props.backend} token={this.token} />
-          </div>
-        } />
-      </Routes>
-    </BrowserRouter >
+          } />
+        </Routes>
+      </BrowserRouter >
     );
   }
 }
