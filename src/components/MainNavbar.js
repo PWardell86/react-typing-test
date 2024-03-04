@@ -11,8 +11,8 @@ function MainNavbar({ user }) {
       document.getElementById('signin-section').style.display = 'none';
       document.getElementById('user-section').style.display = 'block';
     } else {
-      document.getElementById('signin-section').style.display = 'none';
-      document.getElementById('user-section').style.display = 'block';
+      document.getElementById('signin-section').style.display = 'block';
+      document.getElementById('user-section').style.display = 'none';
     }
   }, [user]);
 

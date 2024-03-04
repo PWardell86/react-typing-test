@@ -7,20 +7,18 @@ function UserStats({ backend, token }) {
   const MAX_ROWS = 10;
   const [data, setData] = React.useState([]);
 
-  const refresh = async () => {
-    document.getElementById('refresh-img').classList.add('spin');
-    await getScores();
-    document.getElementById('refresh-img').classList.remove('spin');
-  }
 
-  const getScores = async () => {
-    await axios.post(backend + '/getscores', {
+  const getScores = () => {
+    document.getElementById('refresh-img').classList.add('spin');
+    axios.post(backend + '/getscores', {
       token: token,
       max_rows: MAX_ROWS
     }).then((response) => {
       setData(response.data.scores);
     }).catch((error) => {
       console.log(error);
+    }).finally(() => {
+      document.getElementById('refresh-img').classList.remove('spin');
     });
   }
 
