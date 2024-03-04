@@ -1,19 +1,17 @@
 import { Table } from 'react-bootstrap';
 import './UserStats.css';
-import axios from 'axios';
 import React from 'react';
+import { getScores } from '../ServerAPI';
 
 function UserStats({ backend, token }) {
   const MAX_ROWS = 10;
   const [data, setData] = React.useState([]);
 
 
-  const getScores = () => {
+  const refresh = () => {
     document.getElementById('refresh-img').classList.add('spin');
-    axios.post(backend + '/getscores', {
-      token: token,
-      max_rows: MAX_ROWS
-    }).then((response) => {
+    getScores(token, MAX_ROWS)
+    .then((response) => {
       setData(response.data.scores);
     }).catch((error) => {
       console.log(error);
@@ -28,7 +26,7 @@ function UserStats({ backend, token }) {
     <div id="user-stats">
       <div id="stats-header">
         <h1>Stats</h1>
-        <img id="refresh-img" className="spinner" src="refresh.svg" onClick={refresh} />
+        <img id="refresh-img" className="spinner" src="refresh.svg" alt="" onClick={refresh} />
       </div>
       {data.length === 0 && <p>No data</p>}
       {data.length !== 0 &&
