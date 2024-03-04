@@ -31,8 +31,13 @@
 }
 
 .btn-main {
-  background-color: var(--main-button-color);
+  background-color: var(--main-button-color) !important;
   color: black ;
   margin-right: 10px;
   margin-block: 5px;
+  border: none;
+}
+
+.btn-main:hover {
+  color: white;
 }

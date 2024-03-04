@@ -5,12 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const ADDRESS = "3.142.245.224"
-const BACKEND = `http://${ADDRESS}:5000/api`;
 
 root.render(
     // <React.StrictMode>
-      <App backend={BACKEND}/>
+      <App/>
     // </React.StrictMode>
 );
 

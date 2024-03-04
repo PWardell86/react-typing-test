@@ -21,3 +21,6 @@
   font-size: 0.7em;
 }
 
+.failed {
+  outline: 3px solid rgba(255, 0, 0, 0.5);
+}

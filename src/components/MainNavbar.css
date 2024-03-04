@@ -9,7 +9,7 @@
   color: var(--main-button-text-color);
 }
 
-.navbar-brand {
+.navbar {
   user-select: none;
 }
 
@@ -65,4 +65,24 @@
 
 #signed-in {
   margin-bottom: 0 !important;
+}
+
+#user-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+#title-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#last-updated {
+  font-size: 0.7em;
+  color: gray;
+  margin-bottom: 0;
+  margin-left: 1em;
+  align-self: center;
 }
