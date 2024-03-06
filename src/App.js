@@ -35,7 +35,7 @@ class App extends React.Component {
         }
         <footer>
           <FeedbackModal />
-          <p class="warning">This is a WIP. Some things are not polished. Scores you save now will probably be lost.</p>
+          <p className="warning">This is a WIP. Some things are not polished. Scores you save now will probably be lost.</p>
         </footer>
 
 

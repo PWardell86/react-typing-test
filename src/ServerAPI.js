@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 const ADDRESS = '3.12.136.62';
-const BACKEND = `https://${ADDRESS}:5000/api`;
+const BACKEND = `http://${ADDRESS}:5000/api`;
 
 function signUp(username, password) {
   return axios.post(BACKEND + '/createuser', {
     username: username,
     password: password
-  }).then((response) => {
+  }).then(() => {
     login(username, password)
   });
 }
@@ -36,7 +36,7 @@ function getUser(token) {
 function getScores(token, maxRows) {
   return axios.post(BACKEND + '/getscores', {
     token: token,
-    maxRows: maxRows
+    max_rows: maxRows
   });
 }
 
@@ -53,4 +53,4 @@ function saveFeedback(feedback) {
   })
 }
 
-export { signUp, login, getUser, getScores, addScore, saveFeedback, logout};
+export { signUp, login, getUser, getScores, addScore, saveFeedback, logout };

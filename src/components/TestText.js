@@ -31,7 +31,6 @@ class TestText extends React.Component {
   handleKeyDown = (event) => {
     if (this.props.state.finished) return;
     // If we see Backspace, handle it. If we see any other special key, ignore it.
-    console.log(event.key)
     if (event.key.length > 1) {
       if (event.key === "Backspace") {
         this.handleBackspace(event);

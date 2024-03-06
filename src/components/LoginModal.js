@@ -9,18 +9,32 @@ function LoginModal() {
   const [password, setPassword] = useState("");
 
   const handleClose = () => setShow(false);
+
   const handleShow = () => {
     setPassword("");
     setUsername("");
     setShow(true);
   };
 
+  const handleBadLogin = () => {
+    document.getElementById("login-username").classList.add("failed");
+    document.getElementById("login-password").classList.add("failed");
+    document.getElementById("bad-login-message").style.display = "block";
+  }
+  const resetBadLogin = () => {
+    document.getElementById("login-username").classList.remove("failed");
+    document.getElementById("login-password").classList.remove("failed");
+    document.getElementById("bad-login-message").style.display = "none";
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     login(username, password)
       .catch((error) => {
-        if (error.code === 'ERR_NETWORK') {
-          alert("Hmmm, the server won't respond... \n\nPlease try again later");
+        if (error.response && error.response.status === 400) {
+          handleBadLogin();
+        } else {
+          alert("Could not connect to the server. Please try again later.");
         }
       });
   }
@@ -58,10 +72,11 @@ function LoginModal() {
                 as="input"
                 value={username}
                 placeholder="Enter Username"
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => { resetBadLogin(); setUsername(e.target.value) }}
                 required
               />
             </Form.Group>
+
             <Form.Group
               className="mb-3"
             // id="username"
@@ -73,10 +88,11 @@ function LoginModal() {
                 type="password"
                 value={password}
                 placeholder="Enter Password"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => { resetBadLogin(); setPassword(e.target.value) }}
                 required
               />
             </Form.Group>
+            <p className="bad-message" id="bad-login-message">Your username or password is incorrect</p>
             <Button
               className="btn-main btn"
               variant="primary"

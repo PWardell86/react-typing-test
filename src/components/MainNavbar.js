@@ -2,16 +2,15 @@ import React, { useEffect } from "react";
 import './MainNavbar.css';
 import LoginModal from './LoginModal';
 import SignupModal from "./SignupModal";
-import { logout } from '../ServerAPI';
-
+import UserDropdown from './UserDropdown';
 function MainNavbar({ user }) {
 
   useEffect(() => {
     if (user) {
       document.getElementById('signin-section').style.display = 'none';
-      document.getElementById('user-section').style.display = 'block';
+      document.getElementById('user-section').style.display = 'flex';
     } else {
-      document.getElementById('signin-section').style.display = 'block';
+      document.getElementById('signin-section').style.display = 'flex';
       document.getElementById('user-section').style.display = 'none';
     }
   }, [user]);
@@ -24,7 +23,8 @@ function MainNavbar({ user }) {
       </div>
       <div id="user-section">
         <p id="signed-in">Welcome, {user}</p>
-        <button id="logout-btn" className="btn" onClick={logout} >Logout</button>
+        <UserDropdown />
+        {/* <img id="logout-btn" className="btn btn-hollow"src="log-out.svg" aria-labelledby="logout" onClick={logout} /> */}
       </div>
 
       <div id="signin-section">

@@ -3,14 +3,15 @@ import './UserStats.css';
 import React from 'react';
 import { getScores } from '../ServerAPI';
 
-function UserStats({ backend, token }) {
+function UserStats() {
   const MAX_ROWS = 10;
   const [data, setData] = React.useState([]);
 
 
   const refresh = () => {
     document.getElementById('refresh-img').classList.add('spin');
-    getScores(token, MAX_ROWS)
+
+    getScores(localStorage.getItem('token'), MAX_ROWS)
     .then((response) => {
       setData(response.data.scores);
     }).catch((error) => {
@@ -20,7 +21,7 @@ function UserStats({ backend, token }) {
     });
   }
 
-  React.useEffect(getScores, [backend, token]);
+  React.useEffect(() => {getScores(localStorage.getItem('token'), MAX_ROWS)});
 
   return (
     <div id="user-stats">

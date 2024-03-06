@@ -24,3 +24,9 @@
 .failed {
   outline: 3px solid rgba(255, 0, 0, 0.5);
 }
+
+.bad-message {
+  color: red;
+  font-size: 0.7em;
+  display: none;
+}
