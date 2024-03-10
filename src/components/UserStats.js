@@ -12,22 +12,23 @@ function UserStats() {
     document.getElementById('refresh-img').classList.add('spin');
 
     getScores(localStorage.getItem('token'), MAX_ROWS)
-    .then((response) => {
-      setData(response.data.scores);
-    }).catch((error) => {
-      console.log(error);
-    }).finally(() => {
-      document.getElementById('refresh-img').classList.remove('spin');
-    });
+      .then((response) => {
+        setData(response.data.scores);
+      }).catch((error) => {
+        console.log(error);
+      }).finally(() => {
+        document.getElementById('refresh-img').classList.remove('spin');
+      });
+
   }
 
-  React.useEffect(() => {getScores(localStorage.getItem('token'), MAX_ROWS)});
+  React.useEffect(() => { getScores(localStorage.getItem('token'), MAX_ROWS) });
 
   return (
     <div id="user-stats">
       <div id="stats-header">
         <h1>Stats</h1>
-        <img id="refresh-img" className="spinner" src="refresh.svg" alt="" onClick={refresh} />
+        <img id="refresh-img" className="spinner" src="refresh.svg" alt="Refresh" onClick={refresh} />
       </div>
       {data.length === 0 && <p>No data</p>}
       {data.length !== 0 &&

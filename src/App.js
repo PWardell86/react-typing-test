@@ -27,12 +27,12 @@ class App extends React.Component {
           <MainNavbar user={this.state.user} />
           <MainSection />
         </div>
-        {this.state.user &&
+        {/* {this.state.user && */}
           <div>
             <div className="section-sep" />
             <UserStats token={this.token} />
           </div>
-        }
+        {/* } */}
         <footer>
           <FeedbackModal />
           <p className="warning">This is a WIP. Some things are not polished. Scores you save now will probably be lost.</p>

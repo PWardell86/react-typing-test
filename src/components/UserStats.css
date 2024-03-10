@@ -21,6 +21,7 @@ th, td {
   margin-right: 10px;
 }
 
+
 @keyframes spin {
   to {
     transform: rotate(-360deg);
