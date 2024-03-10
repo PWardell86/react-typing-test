@@ -1,9 +1,10 @@
-:root {
-  --main-bg-color: #1f1f1f;
-  --sec-bg-color: #525252;
-  --main-text-color: #000000;
-  --main-button-color: #00a878;
-  --main-button-text-color: black;
+.dark-theme {
+  --background: #1f1f1f;
+  --secondary-background: #525252;
+  --text-colour: #ffffff;
+  --btn-colour: #00a878;
+  --btn-hover-colour: #00bf89;
+  --btn-text-colour: rgb(0, 0, 0);
   --main-button-hover-color: #c0bfbf;
   --main-container-color: #e8eddf;
   --secondary-container-color: #c3c3c3;
@@ -11,7 +12,7 @@
 }
 
 body {
-  background-color: var(--main-bg-color);
+  background-color: var(--background);
   font-family: var(--main-font);
   color: white;
   font-size: 20px;
@@ -19,6 +20,40 @@ body {
   padding: 0;
 }
 
+.btn-primary {
+  background-color: var(--btn-colour) !important;
+  border: none;
+  color: var(--btn-text-colour);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--btn-colour);
+  border: 2px solid var(--btn-colour) !important;
+}
+
+.btn-secondary:hover {
+  background-color: var(--btn-colour);
+  color: var(--btn-text-colour);
+}
+
+.btn-text {
+  color: white;
+  background-color: transparent;
+  border: none;
+}
+
+.btn-text:hover {
+  color: var(--btn-colour);
+}
+
+.btn-dropdown {
+  background: none;
+  color: var(--text-colour);
+  border: none;
+  align-self: center;
+
+}
 /* CSS for a custom message that is hidden by default */
 #mobile-support-message {
   display: none;

@@ -36,8 +36,7 @@ function SignupModal() {
     <>
       <Button
         id="signup-btn"
-        className="btn-hollow"
-        variant="link"
+        variant="secondary"
         onClick={handleShow}
       >
         Sign Up

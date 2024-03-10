@@ -22,7 +22,7 @@ class App extends React.Component {
   }
   render = () => {
     return (
-      <>
+      <div>
         <div id="game-section">
           <MainNavbar user={this.state.user} />
           <MainSection />
@@ -39,7 +39,7 @@ class App extends React.Component {
         </footer>
 
 
-      </>
+      </div>
     );
   }
 }

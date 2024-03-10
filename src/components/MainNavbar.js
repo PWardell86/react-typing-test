@@ -24,7 +24,6 @@ function MainNavbar({ user }) {
       <div id="user-section">
         <p id="signed-in">Welcome, {user}</p>
         <UserDropdown />
-        {/* <img id="logout-btn" className="btn btn-hollow"src="log-out.svg" aria-labelledby="logout" onClick={logout} /> */}
       </div>
 
       <div id="signin-section">
