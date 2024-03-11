@@ -22,13 +22,15 @@ function SignupModal() {
       alert("Passwords do not match");
       return;
     }
-
+    document.getElementById("signin-btn-spin").removeAttribute("hidden");
     signUp(username, password)
       .catch((error) => {
         if (error.code === 'ERR_NETWORK') {
           alert("Hmmm, the server won't respond... \n\nPlease try again later");
         }
         console.log(error);
+      }).finally(() => {
+        document.getElementById("signin-btn-spin").setAttribute("hidden", true);
       });
   }
 
@@ -36,8 +38,7 @@ function SignupModal() {
     <>
       <Button
         id="signup-btn"
-        className="btn-hollow"
-        variant="link"
+        variant="secondary"
         onClick={handleShow}
       >
         Sign Up
@@ -98,7 +99,8 @@ function SignupModal() {
               variant="primary"
               type="submit"
             >
-              Submit
+              <span id="signin-btn-spin" className="spinner-border spinner-border-sm" role="status" aria-hidden="true" hidden></span>
+              <span>Submit</span>
             </Button>
           </Form>
         </Modal.Body>

@@ -27,7 +27,7 @@ function FeedbackModal() {
 
   return (
     <>
-      <Button id="feedback-btn" variant="link" onClick={handleShow}>
+      <Button id="feedback-btn" variant="text" onClick={handleShow}>
         Feedback
       </Button>
 

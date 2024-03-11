@@ -71,8 +71,8 @@ class MainSection extends React.Component {
         <StatsContainer data={this.state} />
         <TestText text={this.text} state={this.state} onFinish={this.onFinish} />
         <div className="buttons">
-          <button id="reset-btn" className="btn-main btn" onClick={this.reset}>Reset</button>
-          <button id="new-text-btn" className="btn-main btn" onClick={this.setNewText}>New Text</button>
+          <button className="btn-primary btn" onClick={this.reset}>Reset</button>
+          <button className="btn-primary btn" onClick={this.setNewText}>New Text</button>
         </div>
       </div>
     );

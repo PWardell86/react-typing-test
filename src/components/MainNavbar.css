@@ -1,24 +1,7 @@
-.btn-snd {
-  background-color: transparent;
-  color: var(--main-button-color);
-  border: 2px solid var(--main-button-color);
-}
-
-.btn-snd:hover {
-  background-color: var(--main-button-color);
-  color: var(--main-button-text-color);
-}
-
 .navbar {
   user-select: none;
-}
-
-.avatar {
-  border-radius: 50%;
-  align-self: center;
-  width: 32px;
-  height: 32px;
-  margin-right: 10px;
+  background: var(--secondary-background);
+  color: var(--secondary-text-colour);
 }
 
 .username {
@@ -40,27 +23,9 @@
   height: 100%;
 }
 
-.btn-text {
-  color: white;
+#signin-section > * {
   margin-right: 5px;
   margin-block: 5px;
-}
-
-.btn-text:hover {
-  color: var(--main-button-color);
-}
-
-.btn-hollow {
-  background-color: transparent;
-  color: var(--main-button-color);
-  border: 2px solid var(--main-button-color);
-  margin-right: 10px;
-  margin-block: 5px;
-}
-
-.btn-hollow:hover {
-  background-color: var(--main-button-color);
-  color: var(--main-button-text-color);
 }
 
 #signed-in {
@@ -83,6 +48,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-left: 10px;
 }
 
 #last-updated {

@@ -1,41 +1,44 @@
-import React, { useState } from "react";
-import { Button, Modal, Form } from "react-bootstrap";
-import { login } from "../ServerAPI";
+import React, { useState } from 'react';
+import { Button, Modal, Form } from 'react-bootstrap';
+import { login } from '../ServerAPI';
 import './Form.css';
 
 function LoginModal() {
   const [show, setShow] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleClose = () => setShow(false);
 
   const handleShow = () => {
-    setPassword("");
-    setUsername("");
+    setPassword('');
+    setUsername('');
     setShow(true);
   };
 
   const handleBadLogin = () => {
-    document.getElementById("login-username").classList.add("failed");
-    document.getElementById("login-password").classList.add("failed");
-    document.getElementById("bad-login-message").style.display = "block";
+    document.getElementById('login-username').classList.add('failed');
+    document.getElementById('login-password').classList.add('failed');
+    document.getElementById('bad-login-message').style.display = 'block';
   }
   const resetBadLogin = () => {
-    document.getElementById("login-username").classList.remove("failed");
-    document.getElementById("login-password").classList.remove("failed");
-    document.getElementById("bad-login-message").style.display = "none";
+    document.getElementById('login-username').classList.remove('failed');
+    document.getElementById('login-password').classList.remove('failed');
+    document.getElementById('bad-login-message').style.display = 'none';
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    document.getElementById('login-btn-spin').removeAttribute('hidden');
     login(username, password)
       .catch((error) => {
         if (error.response && error.response.status === 400) {
           handleBadLogin();
         } else {
-          alert("Could not connect to the server. Please try again later.");
+          alert('Could not connect to the server. Please try again later.');
         }
+      }).finally(() => {
+        document.getElementById('login-btn-spin').setAttribute('hidden', true);
       });
   }
 
@@ -43,8 +46,7 @@ function LoginModal() {
     <>
       <Button
         id="login-btn"
-        className="btn-text"
-        variant="link"
+        variant="text"
         onClick={handleShow}
       >
         Login
@@ -98,7 +100,8 @@ function LoginModal() {
               variant="primary"
               type="submit"
             >
-              Submit
+              <span id="login-btn-spin" className="spinner-border spinner-border-sm" role="status" aria-hidden="true" hidden></span>
+              <span id="submit-btn-spin">Submit</span>
             </Button>
           </Form>
         </Modal.Body>
