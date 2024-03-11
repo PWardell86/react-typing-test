@@ -1,7 +1,7 @@
 import { Table } from 'react-bootstrap';
-import './UserStats.css';
 import React from 'react';
 import { getScores } from '../ServerAPI';
+import './UserStats.css';
 
 function UserStats() {
   const MAX_ROWS = 10;
@@ -39,7 +39,7 @@ function UserStats() {
       </div>
       {data.length === 0 && <p>No data</p>}
       {data.length !== 0 &&
-        <Table striped bordered hover>
+        <Table striped bordered>
           <thead>
             <tr>
               <th>Date</th>

@@ -1,5 +1,6 @@
 th, td {
-  color: white;
+  background-color: var(--secondary-background) !important;
+  color: var(--secondary-text-colour) !important;
 }
 
 #user-stats {
