@@ -1,25 +1,36 @@
 import React, { useEffect } from "react";
 import './MainNavbar.css';
+import LoginModal from './LoginModal';
+import SignupModal from "./SignupModal";
+import UserDropdown from './UserDropdown';
 
 function MainNavbar({ user }) {
+
   useEffect(() => {
     if (user) {
       document.getElementById('signin-section').style.display = 'none';
-      document.getElementById('signed-in').style.display = 'block';
+      document.getElementById('user-section').style.display = 'flex';
     } else {
-      document.getElementById('signin-section').style.display = 'block';
-      document.getElementById('signed-in').style.display = 'none';
+      document.getElementById('signin-section').style.display = 'flex';
+      document.getElementById('user-section').style.display = 'none';
     }
   }, [user]);
 
   return (
-    <nav className="navbar navbar-dark bg-dark justify-content-between">
-      <h1 className="navbar-brand">Typing Test</h1>
+    <nav className="navbar">
+      <div id="title-section">
+        <h2>Typing Test</h2>
+        <p id="last-updated">Updated: March 11, 2024</p>
+      </div>
+      <div id="user-section">
         <p id="signed-in">Welcome, {user}</p>
-        <div id="signin-section">
-          <a href="/login" className="btn btn-text">Log In</a>
-          <a href="/signup" className="btn btn-hollow">Sign Up</a>
-        </div>
+        <UserDropdown />
+      </div>
+
+      <div id="signin-section">
+        <LoginModal />
+        <SignupModal />
+      </div>
     </nav>
   );
 }

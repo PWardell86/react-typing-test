@@ -18,7 +18,7 @@ class TestText extends React.Component {
   handleBlur = () => {
     document.removeEventListener('keydown', this.handleKeyDown);
   }
-  
+
   render = () => {
     const testText = [];
     for (let char of this.props.text) {
@@ -29,23 +29,24 @@ class TestText extends React.Component {
   }
 
   handleKeyDown = (event) => {
-    event.preventDefault();
-    if (this.props.state.finished) {
-      return;
-    }
+    if (this.props.state.finished) return;
     // If we see Backspace, handle it. If we see any other special key, ignore it.
     if (event.key.length > 1) {
-      if (event.key === "Backspace")
+      if (event.key === "Backspace") {
         this.handleBackspace(event);
+      }
       return;
     }
+    if (event.key === ' ') {
+      event.preventDefault();
+    }
+
+
     // If we see a character that wouldn't appear in some text, ignore it.
     if (!this.isCharValid(event.key)) return;
-
     // Start the test if it hasn't started yet
-    if (!this.props.state.started) {
-      this.startTest();
-    }
+    if (!this.props.state.started) this.startTest();
+
     const expectedChar = this.props.text[this.props.state.currentIndex];
     const currentElement = document.getElementById(this.props.state.currentIndex);
 

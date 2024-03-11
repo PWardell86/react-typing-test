@@ -1,12 +1,10 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import FeedbackModal from './components/FeedbackModal';
 import MainSection from './components/MainSection';
 import MainNavbar from './components/MainNavbar';
-import LoginPage from './components/LoginPage';
-import SignupPage from './components/SignupPage';
 import UserStats from './components/UserStats';
-import axios from 'axios';
+import { getUser } from './ServerAPI';
 
 class App extends React.Component {
   state = { user: null };
@@ -14,9 +12,7 @@ class App extends React.Component {
 
   componentDidMount() {
     if (this.token) {
-      axios.post(this.props.backend + '/getuser', {
-        token: this.token
-      })
+      getUser(this.token)
         .then((response) => {
           this.setState({ user: response.data.user[3] });
         }).catch((error) => {
@@ -26,27 +22,24 @@ class App extends React.Component {
   }
   render = () => {
     return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<LoginPage user={this.state.user} backend={this.props.backend} />} />
-          <Route path="/signup" element={<SignupPage backend={this.props.backend} />} />
-          <Route path="/" element={
-            <div>
-              <div id="game-section">
-                <MainNavbar user={this.state.user} />
-                <MainSection backend={this.props.backend} />
-              </div>
-              {this.state.user &&
-                <div>
-                  <div className="section-sep" />
-                  <UserStats backend={this.props.backend} token={this.token} />
-                </div>
-              }
+      <div>
+        <div id="game-section">
+          <MainNavbar user={this.state.user} />
+          <MainSection />
+        </div>
+        {this.state.user &&
+          <div>
+            <div className="section-sep" />
+            <UserStats token={this.token} />
+          </div>
+        }
+        <footer>
+          <FeedbackModal />
+          <p className="warning">This is a WIP. Some things are not polished. Scores you save now will probably be lost.</p>
+        </footer>
 
-            </div>
-          } />
-        </Routes>
-      </BrowserRouter >
+
+      </div>
     );
   }
 }
