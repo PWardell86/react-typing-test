@@ -1,5 +1,7 @@
 .navbar {
   user-select: none;
+  background: var(--secondary-background);
+  color: var(--secondary-text-colour);
 }
 
 .username {

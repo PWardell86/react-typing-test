@@ -3,6 +3,7 @@ import './MainNavbar.css';
 import LoginModal from './LoginModal';
 import SignupModal from "./SignupModal";
 import UserDropdown from './UserDropdown';
+
 function MainNavbar({ user }) {
 
   useEffect(() => {
@@ -16,10 +17,10 @@ function MainNavbar({ user }) {
   }, [user]);
 
   return (
-    <nav className="navbar navbar-dark bg-dark justify-content-between">
+    <nav className="navbar">
       <div id="title-section">
         <h2>Typing Test</h2>
-        <p id="last-updated">Updated: Feb 4, 2024</p>
+        <p id="last-updated">Updated: March 11, 2024</p>
       </div>
       <div id="user-section">
         <p id="signed-in">Welcome, {user}</p>

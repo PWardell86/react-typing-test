@@ -21,9 +21,12 @@ th, td {
   margin-right: 10px;
 }
 
+#refresh-icobtn {
+  align-self: center;
+}
 
 @keyframes spin {
   to {
-    transform: rotate(-360deg);
+    transform: rotate(360deg);
   }
 }
