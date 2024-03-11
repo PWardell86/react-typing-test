@@ -1,0 +1,60 @@
+.navbar {
+  user-select: none;
+  background: var(--secondary-background);
+  color: var(--secondary-text-colour);
+}
+
+.username {
+  font-size: 0.75em;
+  align-self: center;
+  padding-right: 10px;
+  user-select: none;
+}
+
+#login-items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 100%;
+}
+
+#logged-in-items {
+  display: flex;
+  height: 100%;
+}
+
+#signin-section > * {
+  margin-right: 5px;
+  margin-block: 5px;
+}
+
+#signed-in {
+  margin-bottom: 0 !important;
+}
+
+#user-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+#user-section > * {
+  margin-right: 10px;
+}
+
+#title-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+}
+
+#last-updated {
+  font-size: 0.7em;
+  color: gray;
+  margin-bottom: 0;
+  margin-left: 1em;
+  align-self: center;
+}

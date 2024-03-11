@@ -1,0 +1,32 @@
+th, td {
+  color: white;
+}
+
+#user-stats {
+  display: grid;
+  justify-content: center;
+  justify-self: center;
+}
+
+.spin {
+  animation: spin 1.5s linear infinite;
+}
+
+#stats-header {
+  display: flex;
+  flex-direction: row;
+}
+
+#stats-header h1 {
+  margin-right: 10px;
+}
+
+#refresh-icobtn {
+  align-self: center;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

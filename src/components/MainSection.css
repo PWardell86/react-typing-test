@@ -30,9 +30,7 @@
   flex-direction: row;
 }
 
-button {
-  background-color: var(--main-button-color) !important;
-  color: black !important;
-  margin-block: 10px !important;
-  margin-right: 10px;
+.buttons > button {
+  margin-inline: 5px;
+  margin-block: 5px;
 }

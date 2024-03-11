@@ -41,7 +41,6 @@ class StatsContainer extends React.Component {
 
   updateWPM = () => {
     const correct = this.props.data.correctChars;
-
     this.setState(prevState => (
       {
         wpm: (correct / 5 / prevState.timer * 60).toFixed(0)
@@ -52,6 +51,7 @@ class StatsContainer extends React.Component {
   updateTime = () => {
     const newTime = (Date.now() - this.props.data.startTime) / 1000;
     this.setState({ timer: newTime.toFixed(1) });
+    this.props.data.elapsed_time = newTime;
   }
 }
 

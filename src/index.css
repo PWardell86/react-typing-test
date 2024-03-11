@@ -1,20 +1,105 @@
-:root {
-  --main-bg-color: #1F1F1F;
-  --sec-bg-color: #525252;
-  --main-text-color: #000000;
-  --main-button-color: #00A878;
-  --main-button-text-color: black;
+.dark-theme {
+  --background: #1f1f1f;
+  --secondary-background: #212529;
+  --sec-bg-hover: #0e1012;
+  --text-colour: #ffffff;
+  --secondary-text-colour: #ffffff;
+  --btn-colour: #00a878;
+  --btn-text-colour: rgb(0, 0, 0);
   --main-button-hover-color: #c0bfbf;
-  --main-container-color: #E8EDDF;
+  --main-container-color: #e8eddf;
+  --secondary-container-color: #c3c3c3;
+  --main-font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.light-theme {
+  --background: #f8f8f8;
+  --secondary-background: #2D3047;
+  --sec-bg-hover: #161722;
+  --text-colour: #000000;
+  --secondary-text-colour: #ffffff;
+  --btn-colour: #94C5CC;
+  --btn-hover-colour: #00bf89;
+  --btn-text-colour: #000000;
+  --main-button-hover-color: #c0bfbf;
+  --main-container-color: #e8eddf;
   --secondary-container-color: #c3c3c3;
   --main-font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: var(--main-bg-color);
-    font-family: var(--main-font);
-    color: white;
-    font-size: 20px;
-    margin: 0;
-    padding: 0;
-    }
+  background-color: var(--background);
+  font-family: var(--main-font);
+  color: var(--text-colour);
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-primary {
+  background-color: var(--btn-colour) !important;
+  border: none;
+  color: inherit;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--btn-colour);
+  border: 2px solid var(--btn-colour) !important;
+}
+
+.btn-secondary:hover {
+  background-color: var(--btn-colour);
+  color: var(--btn-text-colour);
+}
+
+.btn-text {
+  color: inherit;
+  background-color: transparent;
+  border: none;
+}
+
+.btn-text:hover {
+  color: var(--btn-colour);
+}
+
+.btn-dropdown {
+  background: none;
+  color: inherit;
+  border: none;
+  align-self: center;
+}
+
+Button span.spinner-border {
+  margin-right: 5px;
+}
+
+.dropdown-menu {
+  background-color: var(--secondary-background);
+  color: inherit;
+}
+
+.dropdown-item {
+  color: inherit !important;
+}
+.dropdown-item:hover {
+  background-color: var(--sec-bg-hover);
+}
+.form-switch .form-check-input:checked {
+  background-color: var(--btn-colour);
+}
+
+/* CSS for a custom message that is hidden by default */
+#mobile-support-message {
+  display: none;
+}
+
+/* CSS for showing the custom message on screens that are 600px or less */
+@media screen and (max-width: 600px) {
+  #mobile-support-message {
+    display: block;
+  }
+  #root {
+    display: none;
+  }
+}

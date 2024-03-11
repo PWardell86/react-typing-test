@@ -1,0 +1,13 @@
+#feedback-btn {
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+footer {
+  display: flex;
+  flex-basis: row nowrap;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
