@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const ADDRESS = '3.12.136.62';
-const BACKEND = `http://${ADDRESS}:5000/api`;
+const ADDRESS = 'peterwardell.site';
+const BACKEND = `https://${ADDRESS}/api`;
 
 function signUp(username, password) {
   return axios.post(BACKEND + '/createuser', {
