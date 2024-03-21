@@ -23,10 +23,9 @@ function MainNavbar({ user }) {
         <p id="last-updated">Updated: March 11, 2024</p>
       </div>
       <div id="user-section">
-        <p id="signed-in">Welcome, {user}</p>
+        <p id="signed-in">Welcome, {user && user.display_name}</p>
         <UserDropdown />
       </div>
-
       <div id="signin-section">
         <LoginModal />
         <SignupModal />

@@ -1,0 +1,39 @@
+#game-section {
+  height: 100vh;
+}
+
+.section-sep {
+  background-color: gray;
+  position: relative;
+  height: 2px;
+  width: 75%;
+  left: 12.5%;
+}
+
+.warning {
+  color: red;
+  font-size: 0.7em;
+  margin-bottom: 0.1em;
+  margin-right: 0.5em;
+  align-self: center;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

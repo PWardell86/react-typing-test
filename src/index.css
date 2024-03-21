@@ -10,6 +10,7 @@
   --main-container-color: #e8eddf;
   --secondary-container-color: #c3c3c3;
   --main-font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --text-tip-colour: #888;
 }
 
 .light-theme {
@@ -25,6 +26,8 @@
   --main-container-color: #e8eddf;
   --secondary-container-color: #c3c3c3;
   --main-font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --text-tip-colour: #666;
+
 }
 
 body {
