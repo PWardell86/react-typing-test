@@ -7,12 +7,14 @@ import UserDropdown from './UserDropdown';
 function MainNavbar({ user }) {
 
   useEffect(() => {
+    const signinSection = document.getElementById('signin-section');
+    const userSection = document.getElementById('user-section');
     if (user) {
-      document.getElementById('signin-section').style.display = 'none';
-      document.getElementById('user-section').style.display = 'flex';
+      signinSection.setAttribute('hidden', true);
+      userSection.removeAttribute('hidden');
     } else {
-      document.getElementById('signin-section').style.display = 'flex';
-      document.getElementById('user-section').style.display = 'none';
+      signinSection.removeAttribute('hidden');
+      userSection.setAttribute('hidden', true);
     }
   }, [user]);
 
@@ -23,10 +25,9 @@ function MainNavbar({ user }) {
         <p id="last-updated">Updated: March 11, 2024</p>
       </div>
       <div id="user-section">
-        <p id="signed-in">Welcome, {user}</p>
+        <p id="signed-in">Welcome, {user && user.display_name}</p>
         <UserDropdown />
       </div>
-
       <div id="signin-section">
         <LoginModal />
         <SignupModal />

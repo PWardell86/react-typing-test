@@ -40,6 +40,13 @@ function getScores(token, maxRows) {
   });
 }
 
+function setUserOptions(token, options) {
+  return axios.post(BACKEND + '/setuseroptions', {
+    token: token,
+    user_options: options
+  });
+}
+
 function addScore(token, scoreJSON) {
   return axios.post(BACKEND + '/addscore', {
     token: token,
@@ -53,4 +60,4 @@ function saveFeedback(feedback) {
   })
 }
 
-export { signUp, login, getUser, getScores, addScore, saveFeedback, logout };
+export { signUp, login, getUser, getScores, addScore, saveFeedback, logout, setUserOptions};

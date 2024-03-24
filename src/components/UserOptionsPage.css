@@ -1,0 +1,22 @@
+#user-options-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding: 10px;
+}
+
+#user-options-form {
+  width: 33%;
+}
+
+.input-tip {
+  font-size: 0.5em;
+  color:  var(--text-tip-colour);
+}
+
+.form-tip {
+  font-size: 0.7em;
+  color: var(--text-tip-colour);
+}
