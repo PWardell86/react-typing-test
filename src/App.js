@@ -31,7 +31,6 @@ class App extends React.Component {
         <Routes>
           <Route index element={<TypingTestPage user={this.state.user} />} />
           <Route path="/options" element={<UserOptionsPage user={this.state.user} />} />
-          <Route path="/#/whatsnew" element={<TypingTestPage user={this.state.user} showUpdates={true} />} />
           <Route path="*" element={<h1>404 haha</h1>} />
         </Routes>
       </Router>
