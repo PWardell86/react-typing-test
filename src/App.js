@@ -13,13 +13,14 @@ class App extends React.Component {
     if (token) {
       getUser(token)
         .then((response) => {
-          this.setState({ user: response.data });
           const body = document.body;
           body.classList.remove('light-theme', 'dark-theme');
           document.body.classList.add(response.data.default_theme + '-theme');
+          this.setState({ user: response.data });
         }).catch((error) => {
           localStorage.removeItem('token');
           console.log(error);
+          return null;
         });
     }
   }
@@ -30,6 +31,7 @@ class App extends React.Component {
         <Routes>
           <Route index element={<TypingTestPage user={this.state.user} />} />
           <Route path="/options" element={<UserOptionsPage user={this.state.user} />} />
+          <Route path="/#/whatsnew" element={<TypingTestPage user={this.state.user} showUpdates={true} />} />
           <Route path="*" element={<h1>404 haha</h1>} />
         </Routes>
       </Router>

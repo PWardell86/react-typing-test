@@ -3,14 +3,16 @@ import FeedbackModal from './FeedbackModal';
 import MainSection from './MainSection';
 import MainNavbar from './MainNavbar';
 import UserStats from './UserStats';
+import WhatsNewModal from './WhatsNewModal';
 
-function TypingTestPage({ user, setUser }) {
-
+function TypingTestPage({ user, showUpdates}) {
+  console.log(showUpdates);
   return (
     <div>
       <div id="game-section">
         <MainNavbar user={user} />
         <MainSection />
+        {!!showUpdates && <WhatsNewModal show />}
       </div>
       {user &&
         <div>
