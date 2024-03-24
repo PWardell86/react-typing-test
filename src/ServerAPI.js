@@ -60,4 +60,8 @@ function saveFeedback(feedback) {
   })
 }
 
-export { signUp, login, getUser, getScores, addScore, saveFeedback, logout, setUserOptions};
+function getParagraph() {
+  return axios.get(BACKEND + '/getparagraph');
+}
+
+export { signUp, login, getUser, getScores, addScore, saveFeedback, logout, setUserOptions, getParagraph };

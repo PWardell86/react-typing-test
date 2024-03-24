@@ -2,8 +2,7 @@ import './MainSection.css';
 import StatsContainer from './StatsContainer';
 import TestText from './TestText';
 import React from 'react';
-import sampleText from '../paragraphs';
-import { addScore } from '../ServerAPI';
+import { addScore, getParagraph } from '../ServerAPI';
 
 class MainSection extends React.Component {
   text = "";
@@ -16,7 +15,6 @@ class MainSection extends React.Component {
     total_time: 0,
   };
   state = { ...this.DEFAULT };
-
 
   reset = () => {
     this.setState({ ...this.DEFAULT, totalChars: this.text.length });
@@ -35,12 +33,24 @@ class MainSection extends React.Component {
   }
 
   setNewText = () => {
-    const index = Math.floor(Math.random() * sampleText.length);
-    this.text = sampleText[index];
-    this.reset();
+    const testTextSpinny = document.getElementById('test-text-spinny');
+    testTextSpinny.removeAttribute('hidden');
+    getParagraph()
+      .then((response) => {
+        console.log(response.data);
+        this.text = response.data;
+        this.reset();
+      }).catch((error) => {
+        alert('Failed to get new paragraph.');
+        console.log(error);
+      }).finally(() => {
+        testTextSpinny.setAttribute('hidden', true);
+      });
   }
 
   onFinish = () => {
+    const token = localStorage.getItem('token');
+    if (!token) return;
     const wpm = this.state.correctChars / 5 / (this.state.elapsed_time / 60);
 
     addScore(localStorage.getItem('token'), {
@@ -69,7 +79,11 @@ class MainSection extends React.Component {
           <div id="test-info">Start typing to begin...</div>
         </div>
         <StatsContainer data={this.state} />
-        <TestText text={this.text} state={this.state} onFinish={this.onFinish} />
+        <div>
+          <TestText text={this.text} state={this.state} onFinish={this.onFinish} />
+          <span id="test-text-spinny" className="spinner-border spinner-border-sm" role="status" aria-hidden="true" hidden />
+        </div>
+
         <div className="buttons">
           <button className="btn-primary btn" onClick={this.reset}>Reset</button>
           <button className="btn-primary btn" onClick={this.setNewText}>New Text</button>
