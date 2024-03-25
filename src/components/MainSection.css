@@ -35,3 +35,8 @@
   margin-inline: 5px;
   margin-block: 5px;
 }
+
+#test-text-spinny {
+  position: relative;
+  left: 47%;
+}

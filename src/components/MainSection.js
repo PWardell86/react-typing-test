@@ -34,10 +34,11 @@ class MainSection extends React.Component {
 
   setNewText = () => {
     const testTextSpinny = document.getElementById('test-text-spinny');
+    this.text = "";
+    this.reset();
     testTextSpinny.removeAttribute('hidden');
     getParagraph()
       .then((response) => {
-        console.log(response.data);
         this.text = response.data;
         this.reset();
       }).catch((error) => {
@@ -79,7 +80,7 @@ class MainSection extends React.Component {
           <div id="test-info">Start typing to begin...</div>
         </div>
         <StatsContainer data={this.state} />
-        <div>
+        <div id="text-container">
           <TestText text={this.text} state={this.state} onFinish={this.onFinish} />
           <span id="test-text-spinny" className="spinner-border spinner-border-sm" role="status" aria-hidden="true" hidden />
         </div>
