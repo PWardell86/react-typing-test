@@ -3,6 +3,7 @@ import './MainNavbar.css';
 import LoginModal from './LoginModal';
 import SignupModal from "./SignupModal";
 import UserDropdown from './UserDropdown';
+
 import { Link } from 'react-router-dom';
 function MainNavbar({ user, active }) {
 
@@ -46,6 +47,8 @@ function MainNavbar({ user, active }) {
           <SignupModal />
         </div>
       </div>
+
+
     </nav>
   );
 }
