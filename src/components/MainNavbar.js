@@ -46,8 +46,6 @@ function MainNavbar({ user, active }) {
           <SignupModal />
         </div>
       </div>
-
-
     </nav>
   );
 }
