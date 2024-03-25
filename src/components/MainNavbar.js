@@ -4,7 +4,7 @@ import LoginModal from './LoginModal';
 import SignupModal from "./SignupModal";
 import UserDropdown from './UserDropdown';
 
-function MainNavbar({ user }) {
+function MainNavbar({ user, active }) {
 
   useEffect(() => {
     const signinSection = document.getElementById('signin-section');
@@ -18,20 +18,36 @@ function MainNavbar({ user }) {
     }
   }, [user]);
 
+  const getLinkClasses = (linkName) => {
+    return "nav-link btn-text" + ((active === linkName) ? " active" : "");
+  }
+
   return (
-    <nav className="navbar">
-      <div id="title-section">
+    <nav className="navbar navbar-expand-lg">
+      <div className="container-fluid">
         <h2>Typing Test</h2>
-        <p id="last-updated">Updated: March 11, 2024</p>
+        <span className="divider" ></span>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav mb-2 mb-lg-0">
+            <li className="nav-item">
+              <a className={getLinkClasses('home')} href="/">Home</a>
+            </li>
+            <li className="nav-item">
+              <a className={getLinkClasses('leaderboards')} href="/leaderboards">Leaderboards</a>
+            </li>
+          </ul>
+        </div>
+        <div id="user-section">
+          <p id="signed-in">Welcome, {user && user.display_name}</p>
+          <UserDropdown />
+        </div>
+        <div id="signin-section">
+          <LoginModal />
+          <SignupModal />
+        </div>
       </div>
-      <div id="user-section">
-        <p id="signed-in">Welcome, {user && user.display_name}</p>
-        <UserDropdown />
-      </div>
-      <div id="signin-section">
-        <LoginModal />
-        <SignupModal />
-      </div>
+
+
     </nav>
   );
 }
