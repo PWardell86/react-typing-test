@@ -67,4 +67,8 @@ function getLeaderboard(type, maxRows) {
   });
 }
 
-export { signUp, login, getUser, getScores, addScore, saveFeedback, logout, setUserOptions, getLeaderboard };
+function getParagraph() {
+  return axios.get(BACKEND + '/getparagraph');
+}
+
+export { signUp, login, getUser, getScores, addScore, saveFeedback, logout, setUserOptions, getLeaderboard , getParagraph };

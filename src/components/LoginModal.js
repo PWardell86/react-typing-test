@@ -7,6 +7,10 @@ function LoginModal() {
   const [show, setShow] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const loginErrorMessage = 'bad-login-message';
+  const loginUsernameInput = 'login-username';
+  const loginPasswordInput = 'login-password';
+  const loginButtonSpinny = 'login-btn-spin';
 
   const handleClose = () => setShow(false);
 
@@ -17,19 +21,19 @@ function LoginModal() {
   };
 
   const handleBadLogin = () => {
-    document.getElementById('login-username').classList.add('failed');
-    document.getElementById('login-password').classList.add('failed');
-    document.getElementById('bad-login-message').style.display = 'block';
+    document.getElementById(loginUsernameInput).classList.add('failed');
+    document.getElementById(loginPasswordInput).classList.add('failed');
+    document.getElementById(loginErrorMessage).style.display = 'block';
   }
   const resetBadLogin = () => {
-    document.getElementById('login-username').classList.remove('failed');
-    document.getElementById('login-password').classList.remove('failed');
-    document.getElementById('bad-login-message').style.display = 'none';
+    document.getElementById(loginUsernameInput).classList.remove('failed');
+    document.getElementById(loginPasswordInput).classList.remove('failed');
+    document.getElementById(loginErrorMessage).style.display = 'none';
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    document.getElementById('login-btn-spin').removeAttribute('hidden');
+    loginButtonSpinny.removeAttribute('hidden');
     login(username, password)
       .catch((error) => {
         if (error.response && error.response.status === 400) {
@@ -38,7 +42,7 @@ function LoginModal() {
           alert('Could not connect to the server. Please try again later.');
         }
       }).finally(() => {
-        document.getElementById('login-btn-spin').setAttribute('hidden', true);
+        loginButtonSpinny.setAttribute('hidden', true);
       });
   }
 

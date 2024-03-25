@@ -25,6 +25,7 @@
   transform: translateY(25%);
 }
 
+
 .buttons {
   display: flex;
   flex-direction: row;
@@ -33,4 +34,9 @@
 .buttons > button {
   margin-inline: 5px;
   margin-block: 5px;
+}
+
+#test-text-spinny {
+  position: relative;
+  left: 47%;
 }
