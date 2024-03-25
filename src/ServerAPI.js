@@ -60,4 +60,11 @@ function saveFeedback(feedback) {
   })
 }
 
-export { signUp, login, getUser, getScores, addScore, saveFeedback, logout, setUserOptions};
+function getLeaderboard(type, maxRows) {
+  return axios.post(BACKEND + '/getleaderboard', {
+    type: type,
+    max_rows: maxRows
+  });
+}
+
+export { signUp, login, getUser, getScores, addScore, saveFeedback, logout, setUserOptions, getLeaderboard };

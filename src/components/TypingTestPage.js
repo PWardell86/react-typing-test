@@ -9,7 +9,7 @@ function TypingTestPage({ user, showUpdates}) {
   return (
     <div>
       <div id="game-section">
-        <MainNavbar user={user} />
+        <MainNavbar user={user} active="home" />
         <MainSection />
       </div>
       {user &&

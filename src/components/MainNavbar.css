@@ -58,3 +58,19 @@
   margin-left: 1em;
   align-self: center;
 }
+
+.navbar-nav {
+  margin-left: 20px !important;
+}
+
+.nav-link {
+  color: var(--inactive-light);
+}
+
+.active {
+  color: var(--secondary-text-colour) !important;
+}
+
+.active:hover {
+  color: var(--secondary-text-colour) !important;
+}
