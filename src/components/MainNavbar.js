@@ -3,7 +3,7 @@ import './MainNavbar.css';
 import LoginModal from './LoginModal';
 import SignupModal from "./SignupModal";
 import UserDropdown from './UserDropdown';
-
+import { Link } from 'react-router-dom';
 function MainNavbar({ user, active }) {
 
   useEffect(() => {
@@ -30,10 +30,10 @@ function MainNavbar({ user, active }) {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className={getLinkClasses('home')} href="/">Home</a>
+              <Link className={getLinkClasses('home')} to="/">Home</Link>
             </li>
             <li className="nav-item">
-              <a className={getLinkClasses('leaderboards')} href="/leaderboards">Leaderboards</a>
+              <Link className={getLinkClasses('leaderboards')} to="/leaderboards">Leaderboards</Link>
             </li>
           </ul>
         </div>
