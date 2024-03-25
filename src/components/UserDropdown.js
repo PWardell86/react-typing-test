@@ -1,4 +1,5 @@
 import { logout } from "../ServerAPI";
+import { Link } from 'react-router-dom';
 import './UserDropdown.css';
 
 function UserDropdown() {
@@ -6,7 +7,7 @@ function UserDropdown() {
     <div className="btn-group">
       <button type="button" className="btn-dropdown dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
       <ul className="dropdown-menu dropdown-menu-end">
-        <li><a className="dropdown-item" href="/options"> User Options </a ></li>
+        <li><Link className="dropdown-item" to="/options"> User Options </Link ></li>
         <li><hr className="dropdown-divider" /></li>
         <li><button className="dropdown-item" type="button" onClick={logout}> Logout </button ></li>
       </ul>
