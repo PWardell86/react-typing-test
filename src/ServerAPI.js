@@ -60,8 +60,15 @@ function saveFeedback(feedback) {
   })
 }
 
+function getLeaderboard(type, maxRows) {
+  return axios.post(BACKEND + '/getleaderboard', {
+    type: type,
+    max_rows: maxRows
+  });
+}
+
 function getParagraph() {
   return axios.get(BACKEND + '/getparagraph');
 }
 
-export { signUp, login, getUser, getScores, addScore, saveFeedback, logout, setUserOptions, getParagraph };
+export { signUp, login, getUser, getScores, addScore, saveFeedback, logout, setUserOptions, getLeaderboard , getParagraph };

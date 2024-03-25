@@ -4,7 +4,8 @@ import { getUser } from './ServerAPI';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import TypingTestPage from './components/TypingTestPage';
 import UserOptionsPage from './components/UserOptionsPage';
-
+import LeaderboardPage from './components/LeaderboardPage';
+import FeedbackModal from './components/FeedbackModal';
 class App extends React.Component {
   state = { user: null };
 
@@ -31,8 +32,12 @@ class App extends React.Component {
         <Routes>
           <Route index element={<TypingTestPage user={this.state.user} />} />
           <Route path="/options" element={<UserOptionsPage user={this.state.user} />} />
+          <Route path="/leaderboards" element={<LeaderboardPage user={this.state.user} />} />
           <Route path="*" element={<h1>404 haha</h1>} />
         </Routes>
+        <footer>
+          <FeedbackModal />
+        </footer>
       </Router>
 
     );

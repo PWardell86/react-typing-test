@@ -1,0 +1,10 @@
+.leaderboard {
+  list-style-type: none;
+}
+
+#leaderboard-container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+}
