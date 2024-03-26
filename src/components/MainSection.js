@@ -34,12 +34,11 @@ class MainSection extends React.Component {
 
   setNewText = () => {
     const testTextSpinny = document.getElementById('test-text-spinny');
-    this.text = "";
-    this.reset();
+
     testTextSpinny.removeAttribute('hidden');
     getParagraph()
       .then((response) => {
-        this.text = response.data;
+        this.text = response.data.trim();
         this.reset();
       }).catch((error) => {
         alert('Failed to get new paragraph.');
@@ -52,18 +51,16 @@ class MainSection extends React.Component {
   onFinish = () => {
     const token = localStorage.getItem('token');
     if (!token) return;
-    const wpm = this.state.correctChars / 5 / (this.state.elapsed_time / 60);
 
     addScore(localStorage.getItem('token'), {
-      wpm: wpm === Infinity ? -1 : wpm,
-      accuracy: 100 * (this.state.correctChars / this.state.totalChars),
-      elapsed_time: (Date.now() - this.state.startTime) / 1000
-    })
-      .then(() => {
-        alert('Saved your score');
-      }).catch((error) => {
-        console.log(error);
-      });
+      wpm: this.state.wpm,
+      accuracy: this.state.accuracy,
+      elapsed_time: this.state.elapsed_time
+    }).then(() => {
+      alert('Saved your score');
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
   componentDidMount() {

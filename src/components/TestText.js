@@ -51,7 +51,7 @@ class TestText extends React.Component {
     const currentElement = document.getElementById(this.props.state.currentIndex);
 
     // Stop if we reached the end
-    if (this.props.state.currentIndex >= this.props.text.length) {
+    if (this.props.state.currentIndex > this.props.text.length - 1) {
       this.props.state.finished = true;
       this.props.onFinish();
     }

@@ -5,7 +5,6 @@ import MainNavbar from './MainNavbar';
 import UserStats from './UserStats';
 
 function TypingTestPage({ user, showUpdates }) {
-  console.log(showUpdates);
   return (
     <div>
       <div id="game-section">
