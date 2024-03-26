@@ -33,7 +33,8 @@ function LoginModal() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    loginButtonSpinny.removeAttribute('hidden');
+    const loginSpinny = document.getElementById('login-btn-spin');
+    loginSpinny.removeAttribute('hidden');
     login(username, password)
       .catch((error) => {
         if (error.response && error.response.status === 400) {
@@ -42,7 +43,7 @@ function LoginModal() {
           alert('Could not connect to the server. Please try again later.');
         }
       }).finally(() => {
-        loginButtonSpinny.setAttribute('hidden', true);
+        loginSpinny.setAttribute('hidden', true);
       });
   }
 
