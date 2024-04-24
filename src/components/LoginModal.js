@@ -10,7 +10,6 @@ function LoginModal() {
   const loginErrorMessage = 'bad-login-message';
   const loginUsernameInput = 'login-username';
   const loginPasswordInput = 'login-password';
-  const loginButtonSpinny = 'login-btn-spin';
 
   const handleClose = () => setShow(false);
 

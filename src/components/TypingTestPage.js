@@ -1,5 +1,4 @@
 import './TypingTestPage.css';
-import FeedbackModal from './FeedbackModal';
 import MainSection from './MainSection';
 import MainNavbar from './MainNavbar';
 import UserStats from './UserStats';
