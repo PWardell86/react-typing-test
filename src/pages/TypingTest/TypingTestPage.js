@@ -1,13 +1,13 @@
 import './TypingTestPage.css';
 import MainSection from './MainSection';
-import MainNavbar from './MainNavbar';
+import Navbar from '../common/Navbar';
 import UserStats from './UserStats';
 
 function TypingTestPage({ user, showUpdates }) {
   return (
     <div>
       <div id="game-section">
-        <MainNavbar user={user} active="home" />
+        <Navbar user={user} active="home" />
         <MainSection />
       </div>
       {user &&

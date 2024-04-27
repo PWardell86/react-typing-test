@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
-import './MainNavbar.css';
-import LoginModal from './LoginModal';
-import SignupModal from "./SignupModal";
-import UserDropdown from './UserDropdown';
+import React, { useEffect, useContext } from "react";
+import './Navbar.css';
+import LoginModal from '../TypingTest/LoginModal';
+import SignupModal from "../TypingTest/SignupModal";
+import UserDropdown from '../TypingTest/UserDropdown';
+import UserContext from "../../UserContext";
 
-function MainNavbar({ user, active }) {
-
+function Navbar({ active }) {
+  const user = useContext(UserContext);
   useEffect(() => {
     const signinSection = document.getElementById('signin-section');
     const userSection = document.getElementById('user-section');
@@ -35,6 +36,9 @@ function MainNavbar({ user, active }) {
             <li className="nav-item">
               <a className={getLinkClasses('leaderboards')} href="/leaderboards">Leaderboards</a>
             </li>
+            <li className="nav-item">
+              <a className={getLinkClasses('multiplayer')} href="/multiplayer">Multiplayer</a>
+            </li>
           </ul>
         </div>
         <div id="user-section">
@@ -52,4 +56,4 @@ function MainNavbar({ user, active }) {
   );
 }
 
-export default MainNavbar;
+export default Navbar;

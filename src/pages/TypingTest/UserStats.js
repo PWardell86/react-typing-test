@@ -1,6 +1,6 @@
 import { Table } from 'react-bootstrap';
 import React from 'react';
-import { getScores } from '../ServerAPI';
+import { getScores } from '../../ServerAPI';
 import './UserStats.css';
 
 function UserStats() {

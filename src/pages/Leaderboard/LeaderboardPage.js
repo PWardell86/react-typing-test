@@ -1,10 +1,12 @@
-import { getLeaderboard } from '../ServerAPI';
-import { useEffect, useState } from 'react';
+import { getLeaderboard } from '../../ServerAPI';
+import { useEffect, useState, useContext } from 'react';
 import './LeaderboardPage.css';
-import MainNavbar from './MainNavbar';
+import Navbar from '../common/Navbar';
+import UserContext from '../../UserContext';
 
-function LeaderboardPage({ user }) {
+function LeaderboardPage() {
   const [namesAndScores, setNamesAndScores] = useState([]);
+  const user = useContext(UserContext);
 
   useEffect(() => {
     getLeaderboard('wpm', 10)
@@ -17,7 +19,7 @@ function LeaderboardPage({ user }) {
 
   return (
     <>
-      <MainNavbar user={user} active="leaderboards"/>
+      <Navbar user={user} active="leaderboards"/>
       <div id="leaderboard-container">
         <h2>Words Per Minute</h2>
         <ul className="leaderboard">

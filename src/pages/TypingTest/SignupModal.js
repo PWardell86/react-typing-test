@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
-import { signUp } from "../ServerAPI";
+import { signUp } from "../../ServerAPI";
 
 function SignupModal() {
   const [show, setShow] = useState(false);

@@ -2,7 +2,7 @@ import './MainSection.css';
 import StatsContainer from './StatsContainer';
 import TestText from './TestText';
 import React from 'react';
-import { addScore, getParagraph } from '../ServerAPI';
+import { addScore, getParagraph } from '../../ServerAPI';
 
 class MainSection extends React.Component {
   text = "";

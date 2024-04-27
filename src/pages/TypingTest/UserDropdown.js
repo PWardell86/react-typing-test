@@ -1,4 +1,4 @@
-import { logout } from "../ServerAPI";
+import { logout } from "../../ServerAPI";
 import './UserDropdown.css';
 
 function UserDropdown() {

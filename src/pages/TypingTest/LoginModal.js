@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
-import { login } from '../ServerAPI';
+import { login } from '../../ServerAPI';
 import './Form.css';
 
 function LoginModal() {
