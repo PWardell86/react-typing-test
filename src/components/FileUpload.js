@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BACKEND } from "../ServerAPI";
+import axios from "axios";
 
 const FileUpload = () => {
   const [progress, setProgress] = useState(0);
@@ -28,9 +29,8 @@ const FileUpload = () => {
   return (
     <div>
       <h2>Resumable File Upload</h2>
-      <h3>{status}</h3>
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleFileUpload}>Upload File</button>
+      <input type="file" />
+      <button onClick={uploadZipFile}>Upload File</button>
       <progress value={progress} />
     </div>
   );
