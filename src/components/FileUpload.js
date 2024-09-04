@@ -2,26 +2,33 @@ import React, { useState } from "react";
 import { BACKEND } from "../ServerAPI";
 
 const FileUpload = () => {
-  const uploadFile = (e) => {
-    e.preventDefault();
-    let file = e.target.uploadFile.files[0];
-    const formData = new FormData();
+  const [progress, setProgress] = useState(0);
+  const chunkSize = 1024 * 1024; // 1 MB chunks
 
-    formData.append("file", file);
+  const uploadFile = async (file) => {
+    const totalChunks = Math.ceil(file.size / chunkSize);
+    for (let i = 0; i < totalChunks; i++) {
+      setProgress(i / totalChunks);
+      const start = i * chunkSize;
+      const end = Math.min(start + chunkSize, file.size);
 
-    axios
-      .post(BACKEND + "/uploadFile", formData)
-      .then((res) => console.log(res))
-      .catch((err) => console.warn(err));
+      const chunk = file.slice(start, end);
+      const formData = new FormData();
+      formData.append("file", chunk);
+      formData.append("chunk", i);
+      formData.append("totalChunks", totalChunks);
+
+      try {
+        const response = await axios.post(BACKEND + "/uploadFile", formData);
+        // Handle response and progress updates
+      } catch (error) {
+        // Handle errors and retry failed chunks
+      }
+    }
   };
   return (
-    <form
-      action={BACKEND + "/uploadFile"}
-      method="post"
-      enctype="multipart/form-data"
-    >
-      <h2>Resumable File Upload</h2>
-      <input type="file" accept=".zip" name="zipFile" />
+    <form onSubmit={(e) => uploadFile(e.target.zipFile.files[0])}>
+      <input type="file" accept=".zip" name="zipFile" required />
       <button type="submit">Upload File</button>
       <progress value={progress} />
     </form>
