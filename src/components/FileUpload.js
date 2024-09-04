@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BACKEND } from "../ServerAPI";
+import axios from "axios";
 
 const FileUpload = () => {
   const [progress, setProgress] = useState(0);
