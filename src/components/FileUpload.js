@@ -9,7 +9,7 @@ const FileUpload = () => {
   const uploadFile = async (file) => {
     const totalChunks = Math.ceil(file.size / chunkSize);
     for (let i = 0; i < totalChunks; i++) {
-      setProgress(i / totalChunks);
+      setProgress((i + 1) / totalChunks);
       const start = i * chunkSize;
       const end = Math.min(start + chunkSize, file.size);
 
