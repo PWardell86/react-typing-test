@@ -8,8 +8,8 @@ const FileUpload = () => {
 
   const uploadFile = async (file) => {
     const totalChunks = Math.ceil(file.size / chunkSize);
+    const failed = false;
     for (let i = 0; i < totalChunks; i++) {
-      setProgress((i + 1) / totalChunks);
       const start = i * chunkSize;
       const end = Math.min(start + chunkSize, file.size);
 
@@ -21,10 +21,17 @@ const FileUpload = () => {
 
       try {
         const response = await axios.post(BACKEND + "/uploadFile", formData);
-        // Handle response and progress updates
+        setProgress((i + 1) / totalChunks);
       } catch (error) {
-        // Handle errors and retry failed chunks
+        failed = true;
+        alert("Failed to upload file. Maybe try again?");
+        break;
       }
+    }
+    if (failed) {
+      document.getElementById("completed-status").innerText = "Failed";
+    } else {
+      document.getElementById("completed-status").innerText = "Completed";
     }
   };
   return (
@@ -37,6 +44,7 @@ const FileUpload = () => {
       <input type="file" accept=".zip" name="zipFile" required />
       <button type="submit">Upload File</button>
       <progress value={progress} />
+      <span id="completed-status">Waiting...</span>
     </form>
   );
 };
