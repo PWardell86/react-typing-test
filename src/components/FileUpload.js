@@ -4,11 +4,11 @@ import axios from "axios";
 
 const FileUpload = () => {
   const [progress, setProgress] = useState(0);
-  const chunkSize = 1024 * 1024; // 1 MB chunks
+  const chunkSize = 64 * 1024 * 1024; // 1 MB chunks
 
   const uploadFile = async (file) => {
     const totalChunks = Math.ceil(file.size / chunkSize);
-    const failed = false;
+    let failed = false;
     for (let i = 0; i < totalChunks; i++) {
       const start = i * chunkSize;
       const end = Math.min(start + chunkSize, file.size);
