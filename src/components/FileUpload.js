@@ -15,9 +15,13 @@ const FileUpload = () => {
       .catch((err) => console.warn(err));
   };
   return (
-    <form onSubmit={uploadFile}>
+    <form
+      action={BACKEND + "/uploadFile"}
+      method="post"
+      enctype="multipart/form-data"
+    >
       <h2>Resumable File Upload</h2>
-      <input type="file" accept=".zip" name="uploadFile" />
+      <input type="file" accept=".zip" name="zipFile" />
       <button type="submit">Upload File</button>
       <progress value={progress} />
     </form>
