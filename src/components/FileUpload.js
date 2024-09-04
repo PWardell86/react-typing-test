@@ -28,7 +28,12 @@ const FileUpload = () => {
     }
   };
   return (
-    <form onSubmit={(e) => uploadFile(e.target.zipFile.files[0])}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        uploadFile(e.target.zipFile.files[0]);
+      }}
+    >
       <input type="file" accept=".zip" name="zipFile" required />
       <button type="submit">Upload File</button>
       <progress value={progress} />
