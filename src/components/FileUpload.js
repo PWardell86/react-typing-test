@@ -4,7 +4,9 @@ import axios from "axios";
 
 const FileUpload = () => {
   const [progress, setProgress] = useState(0);
-  const uploadZipFile = async (file) => {
+  const uploadZipFile = async (event) => {
+    event.preventDefault();
+    const file = event.target.uploadFile.files[0];
     try {
       const formData = new FormData();
       formData.append("zipFile", file);
@@ -27,12 +29,12 @@ const FileUpload = () => {
   };
 
   return (
-    <div>
+    <form onSubmit={uploadZipFile}>
       <h2>Resumable File Upload</h2>
-      <input type="file" />
-      <button onClick={uploadZipFile}>Upload File</button>
+      <input type="file" accept=".zip" name="uploadFile" />
+      <button type="submit">Upload File</button>
       <progress value={progress} />
-    </div>
+    </form>
   );
 };
 
