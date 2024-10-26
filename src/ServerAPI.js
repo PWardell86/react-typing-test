@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const ADDRESS = "peterwardell.site";
-const BACKEND = `https://${ADDRESS}/api`;
+const BACKEND = `http://${ADDRESS}/api`;
 
 function signUp(username, password) {
   return axios
