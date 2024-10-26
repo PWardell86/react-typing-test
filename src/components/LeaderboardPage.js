@@ -7,7 +7,7 @@ function LeaderboardPage({ user }) {
   const [namesAndScores, setNamesAndScores] = useState([]);
 
   useEffect(() => {
-    getLeaderboard('wpm', 10)
+    getLeaderboard('wpm', 50)
       .then((response) => {
         response.data.forEach((element) => {
           setNamesAndScores((prev) => [...prev, element]);
